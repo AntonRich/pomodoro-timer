@@ -1,0 +1,52 @@
+body {
+  margin: 0 auto;
+  background: lightgrey;
+}
+
+.tomato {
+  overflow: auto;
+  margin: 3em auto;
+  width: 500px;
+  height: 500px;
+  -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+  background-color: tomato;
+  opacity: 0.6;
+}
+
+.time-window {
+  overflow: auto;
+  margin: 3em auto;
+  background: lightgrey;
+  width: 54%;
+  height: 18%;
+  -moz-border-radius: 48px;
+  -webkit-border-radius: 48px;
+  border-radius: 48px;
+}
+
+.time-remaining {
+  font-size: 80px;
+  margin: 0.0em auto;
+  text-align: center;
+}
+
+.work-time {
+
+}
+
+.break-time {
+
+}
+
+.start-stop {
+  overflow: auto;
+  margin: 0 auto;
+  background: darkgrey;
+  width: 12%;
+  height: 6%;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+}
