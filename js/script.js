@@ -6,43 +6,48 @@ window.onload = function(){
   startPauseText.innerHTML = "Start"
 };
 
-var tick;
-
 function startTimer(duration) {
   var startPauseText = document.getElementById("startPauseText");
   startPauseText.innerHTML = "Pause";
 
+  var time = duration;
   var minutes, seconds;
 
-  tick = setInterval(function() {
-    minutes = parseInt(duration / 60, 10);
-    seconds = parseInt(duration % 60, 10);
+  setInterval(function() {
+    minutes = Math.floor(time / 60);
+    seconds = time % 60;
     seconds = seconds < 10 ? "0" + seconds : seconds; //if seconds < 10, add a 0 before (i.e. display 2:01 rather than 2:1);
     countdown.innerHTML = minutes + ":" + seconds;
-    duration--;
+    time--;
   }, 1000);
-
-  tick();
-
 }
 
 function pauseTimer() {
-  clearTimeout(tick);
+  var countdown = document.getElementById("countdown");
+  var currentTime = countdown.innerHTML;
+
   var startPauseText = document.getElementById("startPauseText");
   startPauseText.innerHTML = "Start";
 }
 
-var startPauseButton = document.getElementById("startPause");
-startPauseButton.addEventListener("click", function(){
+function handleStartPause(){
   var startPauseText = document.getElementById("startPauseText");
-  if(startPauseText.innerHTML === "Start"){
+
+  if(startPauseText.textContent === "Start"){
+    startPauseText.textContent = "Pause";
     var countdown = document.getElementById("countdown");
     var duration = convertToTime(countdown.innerHTML);
     startTimer(duration);
+    return;
   }
-  if(startPauseText.innerHTML === "Pause"){
+  if(startPauseText.textContent === "Pause"){
     pauseTimer();
   }
+}
+
+var startPauseButton = document.getElementById("startPause");
+startPauseButton.addEventListener("click", function(){
+  handleStartPause();
 });
 
 
