@@ -15,7 +15,7 @@ body {
   opacity: 0.6;
 }
 
-.time-window {
+.countdown-wrapper {
   overflow: auto;
   margin: 3em auto;
   background: lightgrey;
@@ -24,12 +24,12 @@ body {
   -moz-border-radius: 48px;
   -webkit-border-radius: 48px;
   border-radius: 48px;
+
+  text-align: center;
 }
 
-.time-remaining {
+#countdown {
   font-size: 80px;
-  margin: 0.0em auto;
-  text-align: center;
 }
 
 .work-time {
@@ -64,4 +64,10 @@ body {
 .start-pause:active {
   box-shadow: 1px 0px 1px lightgrey, 0px 1px 1px lightgrey;
   transform: translate(3px, 3px);
+}
+
+#startPauseText {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 0.4em;
 }
