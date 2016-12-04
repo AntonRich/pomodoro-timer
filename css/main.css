@@ -40,13 +40,28 @@ body {
 
 }
 
-.start-stop {
+.start-pause {
   overflow: auto;
-  margin: 0 auto;
+  margin: 1em auto;
+  width: 24%;
+  height: 12%;
   background: darkgrey;
-  width: 12%;
-  height: 6%;
-  -moz-border-radius: 16px;
-  -webkit-border-radius: 16px;
-  border-radius: 16px;
+  color: white;
+  outline: 0;
+  white-space: nowrap;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  box-shadow: 1px 0px 1px lightgrey, 0px 1px 1px lightgrey, 2px 1px 1px lightgrey,
+  1px 2px 1px lightgrey, 3px 2px 1px lightgrey, 2px 3px 1px lightgrey, 4px 3px 1px lightgrey;
+}
+
+.start-pause:hover, .start-pause:focus {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.start-pause:active {
+  box-shadow: 1px 0px 1px lightgrey, 0px 1px 1px lightgrey;
+  transform: translate(3px, 3px);
 }
