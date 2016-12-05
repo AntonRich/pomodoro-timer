@@ -12,7 +12,7 @@ body {
   font-size: 28px;
 }
 
-.work-mode {
+.session-mode {
   overflow: auto;
   margin: 1em auto;
   width: 500px;
@@ -53,8 +53,13 @@ body {
   text-align: center;
   font-size: 32px;
 }
+.time-box p {
+  font-size: 18px !important;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
-.work-time{
+.session-time{
   margin: 4em auto 0.2em auto;
 }
 .break-time{

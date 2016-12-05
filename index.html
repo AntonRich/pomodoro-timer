@@ -7,7 +7,7 @@
     <title>Pomodoro Timer</title>
   </head>
   <body>
-    <div id="main" class="work-mode">
+    <div id="main" class="session-mode">
       <div id="title"></div>
       <div class="countdown-wrapper">
           <span id="countdown"></span>
@@ -20,13 +20,15 @@
         <p class="button-text">Reset</p>
       </div>
 
-      <div class="work-time time-box">
-        <span id="workMinus" class="minus-sign">-</span>
-        <span id="workLength"></span>
-        <span id="workPlus" class="plus-sign">+</span>
+      <div class="session-time time-box">
+        <p>Session Length</p>
+        <span id="sessionMinus" class="minus-sign">-</span>
+        <span id="sessionLength"></span>
+        <span id="sessionPlus" class="plus-sign">+</span>
       </div>
 
       <div class="break-time time-box">
+        <p>Break Length</p>
         <span id="breakMinus" class="minus-sign">-</span>
         <span id="breakLength"></span>
         <span id="breakPlus" class="plus-sign">+</span>
