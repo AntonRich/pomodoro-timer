@@ -40,7 +40,7 @@ body {
 
 }
 
-.start-pause {
+.button {
   overflow: auto;
   margin: 1em auto;
   width: 24%;
@@ -56,17 +56,17 @@ body {
   1px 2px 1px lightgrey, 3px 2px 1px lightgrey, 2px 3px 1px lightgrey, 4px 3px 1px lightgrey;
 }
 
-.start-pause:hover, .start-pause:focus {
+.button:hover, .button:focus {
   cursor: pointer;
   opacity: 0.9;
 }
 
-.start-pause:active {
+.button:active {
   box-shadow: 1px 0px 1px lightgrey, 0px 1px 1px lightgrey;
   transform: translate(3px, 3px);
 }
 
-#startPauseText {
+.button-text {
   font-size: 24px;
   text-align: center;
   margin-top: 0.4em;
