@@ -1,5 +1,8 @@
 var startPauseText = document.getElementById("startPauseText");
 var countdown = document.getElementById("countdown");
+var title = document.getElementById("title");
+var sessionLength = document.getElementById("");
+
 var timerType; //possible values = work, break (default is work)
 var id;
 
@@ -8,15 +11,18 @@ window.onload = function(){
   countdown.textContent = "00:03";
   startPauseText.innerHTML = "Start"
   timerType = "work";
+  loadType();
 };
 
 function loadType(){
   var main = document.getElementById("main");
-  if(timerType === "break"){
-    main.className += " break-mode";
-  }
   if(timerType === "work"){
     main.className = "work-mode";
+    title.textContent = "Work";
+  }
+  if(timerType === "break"){
+    main.className += " break-mode";
+    title.innerHTML = "Break";
   }
 }
 

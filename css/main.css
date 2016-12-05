@@ -3,9 +3,18 @@ body {
   background: lightgrey;
 }
 
+#title {
+  margin: 0.4em auto 0.05em auto;
+  width: 12%;
+  height: 6%;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+}
+
 .work-mode {
   overflow: auto;
-  margin: 3em auto;
+  margin: 1em auto;
   width: 500px;
   height: 500px;
   -moz-border-radius: 50%;
@@ -22,14 +31,13 @@ body {
 
 .countdown-wrapper {
   overflow: auto;
-  margin: 3em auto;
+  margin: 0.5em auto 0.5em auto;
   background: lightgrey;
   width: 54%;
   height: 18%;
   -moz-border-radius: 48px;
   -webkit-border-radius: 48px;
   border-radius: 48px;
-
   text-align: center;
 }
 
@@ -37,17 +45,31 @@ body {
   font-size: 80px;
 }
 
-.work-time {
-
+.time-box {
+  width: 24%;
+  height: 12%;
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 32px;
 }
 
-.break-time {
+.work-time{
+  margin: 4em auto 0.2em auto;
+}
+.break-time{
+  margin: 0.5em auto 0em auto;
+}
+
+.minus-sign {
+
+}
+.plus-sign {
 
 }
 
 .button {
   overflow: auto;
-  margin: 1em auto;
   width: 24%;
   height: 12%;
   background: darkgrey;
@@ -59,6 +81,7 @@ body {
   border-radius: 12px;
   box-shadow: 1px 0px 1px lightgrey, 0px 1px 1px lightgrey, 2px 1px 1px lightgrey,
   1px 2px 1px lightgrey, 3px 2px 1px lightgrey, 2px 3px 1px lightgrey, 4px 3px 1px lightgrey;
+  float: left;
 }
 
 .button:hover, .button:focus {
@@ -75,4 +98,11 @@ body {
   font-size: 24px;
   text-align: center;
   margin-top: 0.4em;
+}
+
+#startPause {
+  margin: 0.5em 0em 0em 7.7em;
+}
+#reset {
+  margin: 0.5em 0em 0em 0.7em;
 }
