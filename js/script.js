@@ -1,3 +1,5 @@
+//TODO: put cap on incrementing session/break length
+
 var startPauseText = document.getElementById("startPauseText");
 var countdown = document.getElementById("countdown");
 var title = document.getElementById("title");
