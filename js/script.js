@@ -1,5 +1,3 @@
-//TODO: PREVENT NEGATIVES EVERYWHERE
-
 var startPauseText = document.getElementById("startPauseText");
 var countdown = document.getElementById("countdown");
 var title = document.getElementById("title");
@@ -10,7 +8,6 @@ var timerType; //possible values = session, break (default is session)
 var id;
 var initialSessionTime;
 var initialBreakTime;
-
 
 //initial display value of 25 minutes, type = session
 window.onload = function(){
@@ -26,6 +23,22 @@ window.onload = function(){
   loadType();
 };
 
+function fullReset(){
+  timerType = "session";
+  loadType();
+  resetTimer();
+}
+
+function resetTimer(){
+  pauseTimer();
+  if(timerType === "session"){
+    countdown.textContent = initialSessionTime;
+  }
+  if(timerType === "break"){
+    countdown.textContent = initialBreakTime;
+  }
+}
+
 function loadType(){
   var main = document.getElementById("main");
   if(timerType === "session"){
@@ -38,6 +51,7 @@ function loadType(){
   }
 }
 
+
 function startTimer(duration) {
   startPauseText.innerHTML = "Pause";
   countdown.innerHTML = convertToString(duration);
@@ -45,7 +59,6 @@ function startTimer(duration) {
   id = setTimeout(function () {
       startTimer(duration);
   }, 1000);
-
   if(timerType === "session" && (countdown.textContent === "00:00")){
     setTimeout(function(){
       pauseTimer();
@@ -56,7 +69,9 @@ function startTimer(duration) {
       startTimer(breaktime);
     }, 1000);
   }
-
+  if(timerType === "break" && (countdown.textContent === "00:00")){
+    fullReset();
+  }
 }
 
 function pauseTimer() {
@@ -64,16 +79,23 @@ function pauseTimer() {
   clearTimeout(id);
 }
 
-function resetTimer(){
-  pauseTimer();
-  if(timerType === "session"){
-    countdown.textContent = initialSessionTime;
-  }
 
+//~~~~~~BUTTON EVENT LISTENERS~~~~~~~
+
+var startPauseButton = document.getElementById("startPause");
+startPauseButton.addEventListener("click", function(){
+  handleStartPause();
+});
+
+var resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", function(){
   if(timerType === "break"){
-    countdown.textContent = initialBreakTime;
+    countdown.innerHTML = initialSessionTime;
+    timerType = "session";
   }
-}
+  resetTimer();
+  loadType();
+});
 
 //multiple return statements less than ideal, but unsure how to handle this otherwise
 function handleStartPause(){
@@ -88,78 +110,44 @@ function handleStartPause(){
   }
 }
 
-var startPauseButton = document.getElementById("startPause");
-startPauseButton.addEventListener("click", function(){
-  handleStartPause();
-});
 
-var resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", function(){
-  if(timerType === "break"){
-    countdown.innerHTML = initialSessionTime;
-    timerType = "session";
-  }
-  resetTimer();
 
-  loadType();
-});
+//~~~~~~ADJUSTOR EVENT LISTENERS~~~~~~
 
-//Add time, subtract time functions
 var sessionPlus = document.getElementById("sessionPlus");
 sessionPlus.addEventListener("click", function(){
-  resetTimer();
-  var currentValue = convertToTime(initialSessionTime);
-  currentValue += 60;
-  initialSessionTime = convertToString(currentValue);
-  countdown.innerHTML = initialSessionTime;
-  if(initialSessionTime.charAt(0) !== "0"){
-    sessionLength.textContent = initialSessionTime.substring(0,2);
-  } else {
-    sessionLength.textContent = initialSessionTime.substring(1,2);
-  }
+  incrementTime(initialSessionTime, "session", sessionLength);
 });
 
 var sessionMinus = document.getElementById("sessionMinus");
 sessionMinus.addEventListener("click", function(){
-  if(convertToTime(initialSessionTime) >= 60){
+  if(convertToTime(initialSessionTime) >= 61){
     decrementTime(initialSessionTime, "session", sessionLength);
   } else {
     return;
   }
 });
 
-//Add time, subtract time functions
 var breakPlus = document.getElementById("breakPlus");
 breakPlus.addEventListener("click", function(){
-  // resetTimer();
-  // var currentValue = convertToTime(initialBreakTime);
-  // currentValue += 60;
-  // initialBreakTime = convertToString(currentValue);
-  //
-  // if(timerType === "break"){
-  //   countdown.innerHTML = initialBreakTime;
-  // }
-  //
-  // if(initialBreakTime.charAt(0) !== "0"){
-  //   breakLength.textContent = initialBreakTime.substring(0,2);
-  // } else {
-  //   breakLength.textContent = initialBreakTime.substring(1,2);
-  // }
-  
+  incrementTime(initialBreakTime, "break", breakLength);
 });
 
 var breakMinus = document.getElementById("breakMinus");
 breakMinus.addEventListener("click", function(){
-  if(convertToTime(initialBreakTime) >= 60){
+  if(convertToTime(initialBreakTime) >= 61){
     decrementTime(initialBreakTime, "break", breakLength);
   } else {
     return;
   }
 });
 
+//~~~~~~~~ HELPER FUNCTIONS ~~~~~~~~~
 
-
-//decrement time takes in the initialTime (initialBreakTime or initialSessionTime), and the node to update (breakLength or sessionLength)
+//increment and decrement functions:
+//parameters: 1) initialVal -- (initialBreakTime or initialSessionTime)
+//            2) typeOfTimer -- current type of timer as a string ("break" or "session")
+//            3) nodeToUpdate -- which time length node to update with new time value (breakLength or sessionLength)
 function decrementTime(initialVal, typeOfTimer, nodeToUpdate){
   resetTimer();
   var currentValue = convertToTime(initialVal);
@@ -199,9 +187,6 @@ function incrementTime(initialVal, typeOfTimer, nodeToUpdate){
     initialSessionTime = initialVal;
   }
 }
-
-
-
 
 //input string is of the format xx : yy, returns duration in seconds
 function convertToTime(str){

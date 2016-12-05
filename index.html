@@ -4,38 +4,36 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico"  />
     <link href="css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
     <title>Pomodoro Timer</title>
   </head>
   <body>
     <div id="main" class="session-mode">
-      <div id="title"></div>
+      <div id="title" class="text"></div>
       <div class="countdown-wrapper">
           <span id="countdown"></span>
       </div>
 
       <div id="startPause" class="button">
-        <p id="startPauseText" class="button-text"></p>
+        <p id="startPauseText" class="button-text text"></p>
       </div>
       <div id="reset" class="button">
-        <p class="button-text">Reset</p>
+        <p class="button-text text">Reset</p>
       </div>
 
       <div class="session-time time-box">
-        <p>Session Length</p>
-        <span id="sessionMinus" class="minus-sign">-</span>
+        <p class="text">Session Length</p>
+        <span id="sessionMinus" class="signs">-</span>
         <span id="sessionLength"></span>
-        <span id="sessionPlus" class="plus-sign">+</span>
+        <span id="sessionPlus" class="signs">+</span>
       </div>
 
       <div class="break-time time-box">
-        <p>Break Length</p>
-        <span id="breakMinus" class="minus-sign">-</span>
+        <p class="text">Break Length</p>
+        <span id="breakMinus" class="signs">-</span>
         <span id="breakLength"></span>
-        <span id="breakPlus" class="plus-sign">+</span>
+        <span id="breakPlus" class="signs">+</span>
       </div>
-
-
-
     </div>
     <script src="js/script.js"></script>>
   </body>

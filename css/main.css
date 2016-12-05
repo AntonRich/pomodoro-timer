@@ -3,13 +3,17 @@ body {
   background: lightgrey;
 }
 
+.text {
+  font-family: 'Aref Ruqaa', serif;
+}
+
 #title {
-  margin: 0.4em auto 0.05em auto;
+  margin: 0.5em auto 1.2em 4.5em;
   width: 12%;
   height: 6%;
   color: white;
   text-align: center;
-  font-size: 28px;
+  font-size: 42px;
 }
 
 .session-mode {
@@ -48,7 +52,6 @@ body {
 .time-box {
   width: 24%;
   height: 12%;
-  background: black;
   color: white;
   text-align: center;
   font-size: 32px;
@@ -66,11 +69,13 @@ body {
   margin: 0.5em auto 0em auto;
 }
 
-.minus-sign {
-
-}
-.plus-sign {
-
+/*set user select to none: ensures no highlighting in case the user clicks a bunch of times */
+.signs:hover {
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 }
 
 .button {
@@ -102,7 +107,7 @@ body {
 .button-text {
   font-size: 24px;
   text-align: center;
-  margin-top: 0.4em;
+  margin-top: 0.2em;
 }
 
 #startPause {
