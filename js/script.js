@@ -1,3 +1,5 @@
+//TODO: PREVENT NEGATIVES EVERYWHERE
+
 var startPauseText = document.getElementById("startPauseText");
 var countdown = document.getElementById("countdown");
 var title = document.getElementById("title");
@@ -12,7 +14,7 @@ var initialBreakTime;
 
 //initial display value of 25 minutes, type = session
 window.onload = function(){
-  countdown.textContent = "00:03";
+  countdown.textContent = "25:00";
   sessionLength.textContent = "25";
   initialSessionTime = countdown.textContent;
 
@@ -39,12 +41,6 @@ function loadType(){
 function startTimer(duration) {
   startPauseText.innerHTML = "Pause";
   countdown.innerHTML = convertToString(duration);
-  // var minutes, seconds;
-  // minutes = Math.floor(duration / 60);
-  // seconds = duration % 60;
-  // minutes = minutes < 10 ? "0" + minutes : minutes;
-  // seconds = seconds < 10 ? "0" + seconds : seconds; //if seconds < 10, add a 0 before (i.e. display 2:01 rather than 2:1);
-  // countdown.innerHTML = minutes + ":" + seconds;
   duration = duration - 1;
   id = setTimeout(function () {
       startTimer(duration);
@@ -73,6 +69,7 @@ function resetTimer(){
   if(timerType === "session"){
     countdown.textContent = initialSessionTime;
   }
+
   if(timerType === "break"){
     countdown.textContent = initialBreakTime;
   }
@@ -98,8 +95,12 @@ startPauseButton.addEventListener("click", function(){
 
 var resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", function(){
+  if(timerType === "break"){
+    countdown.innerHTML = initialSessionTime;
+    timerType = "session";
+  }
   resetTimer();
-  timerType = "session";
+
   loadType();
 });
 
