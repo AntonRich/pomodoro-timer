@@ -121,54 +121,84 @@ sessionPlus.addEventListener("click", function(){
 
 var sessionMinus = document.getElementById("sessionMinus");
 sessionMinus.addEventListener("click", function(){
-  resetTimer();
-  var currentValue = convertToTime(initialSessionTime);
-  currentValue -= 60;
-  initialSessionTime = convertToString(currentValue);
-  countdown.innerHTML = initialSessionTime;
-  if(initialSessionTime.charAt(0) !== "0"){
-    sessionLength.textContent = initialSessionTime.substring(0,2);
+  if(convertToTime(initialSessionTime) >= 60){
+    decrementTime(initialSessionTime, "session", sessionLength);
   } else {
-    sessionLength.textContent = initialSessionTime.substring(1,2);
+    return;
   }
 });
 
 //Add time, subtract time functions
 var breakPlus = document.getElementById("breakPlus");
 breakPlus.addEventListener("click", function(){
-  resetTimer();
-  var currentValue = convertToTime(initialBreakTime);
-  currentValue += 60;
-  initialBreakTime = convertToString(currentValue);
-
-  if(timerType === "break"){
-    countdown.innerHTML = initialBreakTime;
-  }
-
-  if(initialBreakTime.charAt(0) !== "0"){
-    breakLength.textContent = initialBreakTime.substring(0,2);
-  } else {
-    breakLength.textContent = initialBreakTime.substring(1,2);
-  }
+  // resetTimer();
+  // var currentValue = convertToTime(initialBreakTime);
+  // currentValue += 60;
+  // initialBreakTime = convertToString(currentValue);
+  //
+  // if(timerType === "break"){
+  //   countdown.innerHTML = initialBreakTime;
+  // }
+  //
+  // if(initialBreakTime.charAt(0) !== "0"){
+  //   breakLength.textContent = initialBreakTime.substring(0,2);
+  // } else {
+  //   breakLength.textContent = initialBreakTime.substring(1,2);
+  // }
+  
 });
 
 var breakMinus = document.getElementById("breakMinus");
 breakMinus.addEventListener("click", function(){
-  resetTimer();
-  var currentValue = convertToTime(initialBreakTime);
-  currentValue -= 60;
-  initialBreakTime = convertToString(currentValue);
-
-  if(timerType === "break"){
-    countdown.innerHTML = initialBreakTime;
-  }
-
-  if(initialBreakTime.charAt(0) !== "0"){
-    breakLength.textContent = initialBreakTime.substring(0,2);
+  if(convertToTime(initialBreakTime) >= 60){
+    decrementTime(initialBreakTime, "break", breakLength);
   } else {
-    breakLength.textContent = initialBreakTime.substring(1,2);
+    return;
   }
 });
+
+
+
+//decrement time takes in the initialTime (initialBreakTime or initialSessionTime), and the node to update (breakLength or sessionLength)
+function decrementTime(initialVal, typeOfTimer, nodeToUpdate){
+  resetTimer();
+  var currentValue = convertToTime(initialVal);
+  currentValue -= 60;
+  initialVal = convertToString(currentValue);
+  if(timerType === typeOfTimer){
+    countdown.innerHTML = initialVal;
+  }
+  if(initialVal.charAt(0) !== "0"){
+    nodeToUpdate.textContent = initialVal.substring(0,2);
+  } else {
+    nodeToUpdate.textContent = initialVal.substring(1,2);
+  }
+  if(typeOfTimer === "break"){
+    initialBreakTime = initialVal;
+  } else {
+    initialSessionTime = initialVal;
+  }
+}
+
+function incrementTime(initialVal, typeOfTimer, nodeToUpdate){
+  resetTimer();
+  var currentValue = convertToTime(initialVal);
+  currentValue += 60;
+  initialVal = convertToString(currentValue);
+  if(timerType === typeOfTimer){
+    countdown.innerHTML = initialVal;
+  }
+  if(initialVal.charAt(0) !== "0"){
+    nodeToUpdate.textContent = initialVal.substring(0,2);
+  } else {
+    nodeToUpdate.textContent = initialVal.substring(1,2);
+  }
+  if(typeOfTimer === "break"){
+    initialBreakTime = initialVal;
+  } else {
+    initialSessionTime = initialVal;
+  }
+}
 
 
 
