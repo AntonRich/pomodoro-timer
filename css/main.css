@@ -3,7 +3,7 @@ body {
   background: lightgrey;
 }
 
-.tomato {
+.work-mode {
   overflow: auto;
   margin: 3em auto;
   width: 500px;
@@ -13,6 +13,11 @@ body {
 	border-radius: 50%;
   background-color: tomato;
   opacity: 0.6;
+}
+
+.break-mode {
+  background-color: #0074D9 !important;
+  opacity: 0.75;
 }
 
 .countdown-wrapper {
