@@ -38,7 +38,7 @@ body {
   margin: 0.5em auto 0.5em auto;
   background: lightgrey;
   width: 54%;
-  height: 18%;
+  height: 19%;
   -moz-border-radius: 48px;
   -webkit-border-radius: 48px;
   border-radius: 48px;
@@ -81,7 +81,7 @@ body {
 .button {
   overflow: auto;
   width: 24%;
-  height: 12%;
+  height: 14%;
   background: darkgrey;
   color: white;
   outline: 0;

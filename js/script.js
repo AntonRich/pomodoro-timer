@@ -1,4 +1,5 @@
 //TODO: put cap on incrementing session/break length
+//TODO: fix lag at beginning 
 
 var startPauseText = document.getElementById("startPauseText");
 var countdown = document.getElementById("countdown");
